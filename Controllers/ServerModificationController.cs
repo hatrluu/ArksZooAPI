@@ -31,8 +31,8 @@ namespace ArksZooAPI.Controllers
             return valuePair;
         }
 
-        //PUT ServerModification
-        [HttpPut]
+        //POST ServerModification
+        [HttpPost]
         public string UpdateConfig(Models.ServerConfig newConfig)
         {
             var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
@@ -57,13 +57,13 @@ namespace ArksZooAPI.Controllers
         [HttpGet]
         public Boolean ServerAvailability(string ipaddress, int port)
         {
-            /*
+            
             Process[] pname = Process.GetProcessesByName("ShooterGameServer");
             if (pname.Length == 0)
                 return false;
             else
                 return true;
-            */
+            /*
             TcpClient tcpClient = new TcpClient();
             try
             {
@@ -74,6 +74,7 @@ namespace ArksZooAPI.Controllers
             {
                 return false;
             }
+            */
         }
     }
 
@@ -85,19 +86,44 @@ namespace ArksZooAPI.Controllers
 
         //GET startServer/mapName}
         [HttpGet("{mapName}")]
-        public void StartServer(string mapName)
+        public string StartServer(string mapName)
         {
+            /*
             var filePath = ConfigurationManager.AppSettings["gamePath"].ToString() + "/Binaries/Win64/Start_"+mapName+".bat";
-            
-            ProcessStartInfo processInfo = new ProcessStartInfo(filePath);
-            processInfo.UseShellExecute = false;
-            Process batchProcess = new Process();
-            batchProcess.StartInfo = processInfo;
-            batchProcess.Start();
+            try
+            {
+                ProcessStartInfo processInfo = new ProcessStartInfo(filePath);
+                processInfo.UseShellExecute = false;
+                Process batchProcess = new Process();
+                batchProcess.StartInfo = processInfo;
+                batchProcess.Start();
+                return "Start_" + mapName + ".bat Map started successfully";
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
+            BackupController backupController = new BackupController();
+            */
+            try
+            {
+                var batchFileLocation = ConfigurationManager.AppSettings["gamePath"].ToString() + "/Binaries/Win64/Start_" + mapName + ".bat";
+                Process p = new Process();
+                p.StartInfo.FileName = batchFileLocation;
+                p.StartInfo.WorkingDirectory = Path.GetDirectoryName(batchFileLocation);
+                p.StartInfo.UseShellExecute = false;
+                p.Start();
+                //backupController.StartBackup();
+                return "Start_" + mapName + ".bat Map started successfully";
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
 
             //Process.Start(filePath);
             //var responseString = await client.GetStringAsync("https://localhost:44347/Backup/start-backup");
-                
+
             //Process.Start("cmd.exe", "cd "+ ConfigurationManager.AppSettings["gamePath"] + " Binaries/Win64");
             //CALL Start_TheIsland.bat
         }

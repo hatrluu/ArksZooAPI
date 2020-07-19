@@ -28,13 +28,11 @@ namespace ArksZooAPI.Controllers
         [HttpGet]
         public string LatestBackup()
         {
+            //Need to catch empty folder
             string latestBackup = "";
             DirectoryInfo[] di = new DirectoryInfo(backupServerPath).GetDirectories();
-            foreach (var folder in di.OrderByDescending(x => x.LastWriteTime).Skip(numberOfSavesToKeep))
-            {
-                latestBackup = folder.Name;
-            }
-
+            var latestFile = di.OrderByDescending(x => x.LastWriteTime).First();
+            latestBackup = latestFile.Name;
             return latestBackup.Remove(0,7);
         }
 
@@ -63,7 +61,7 @@ namespace ArksZooAPI.Controllers
         //GET Backup/startbackup
         [Route("startbackup")]
         [HttpGet]
-        public void StartBackup()
+        public string StartBackup()
         {
             int backupInterval = Int32.Parse(ConfigurationManager.AppSettings["BackupInterval"]);
             int hoursSave = Int32.Parse(ConfigurationManager.AppSettings["HoursSave"]);
@@ -71,8 +69,8 @@ namespace ArksZooAPI.Controllers
             numberOfSavesToKeep = hoursSave * 60 / backupInterval;
 
             TimeChecker(backupInterval);
-            Console.WriteLine("Backup started at {0:hh:mm:ss.fff}", DateTime.Now);
             backupStatus = true;
+            return string.Format("Backup started at {0:hh:mm:ss.fff}", DateTime.Now);
             /*
             Console.WriteLine("\nPress the Enter key to exit the application...\n");
             Console.WriteLine("The application started at {0:hh:mm:ss.fff}", DateTime.Now);
@@ -85,12 +83,37 @@ namespace ArksZooAPI.Controllers
         //GET Backup/stopbackup
         [Route("stopbackup")]
         [HttpGet]
-        public void StopBackup()
+        public string StopBackup()
         {
             saveTimer.Stop();
             saveTimer.Dispose();
-            Console.WriteLine("Backup ended at {0:hh:mm:ss.fff}", DateTime.Now);
             backupStatus = false;
+            return string.Format("Backup ended at {0:hh:mm:ss.fff}", DateTime.Now);
+        }
+
+        [Route("testbackup")]
+        [HttpGet]
+        public string TestBackup()
+        {
+            //Update path
+            backupServerPath = ConfigurationManager.AppSettings["BackupPath"];
+
+            string current = currentServerPath;
+            string backup = backupServerPath+ "\\";
+            DateTime localDateTime = DateTime.Now;
+            string backupFolder = "backup-" + localDateTime.ToString("hhmmtt-MMdd");
+            string newBackupLocation = backup + backupFolder;
+            Directory.CreateDirectory(newBackupLocation);
+            
+            //Now Create all of the directories
+            foreach (string dirPath in Directory.GetDirectories(current, "*", SearchOption.AllDirectories))
+                Directory.CreateDirectory(dirPath.Replace(current, newBackupLocation));
+
+            //Copy all the files & Replaces any files with the same name
+            foreach (string newPath in Directory.GetFiles(current, "*.*", SearchOption.AllDirectories))
+                System.IO.File.Copy(newPath, newPath.Replace(current, newBackupLocation), true);
+
+            return string.Format("Backup Completed at {0}", backupFolder);
         }
         private static void TimeChecker(int minute)
         {
@@ -103,8 +126,11 @@ namespace ArksZooAPI.Controllers
         }
         private static void BackupSaved(Object source, ElapsedEventArgs e)
         {
+            //Update path
+            backupServerPath = ConfigurationManager.AppSettings["BackupPath"];
+
             string current = currentServerPath;
-            string backup = backupServerPath;
+            string backup = backupServerPath+"\\";
             DateTime localDateTime = DateTime.Now;
             string backupFolder = "backup-" + localDateTime.ToString("hhmmtt-MMdd");
             string newBackupLocation = backup + backupFolder;
