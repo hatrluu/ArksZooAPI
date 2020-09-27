@@ -1,0 +1,62 @@
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: http://127.0.0.1:36936
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI
+Status
+Stop Server
+Status
+Start Map
+Status
+Error: No connection - System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (10061): No connection could be made because the target machine actively refused it. 192.168.1.217:32330
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw(Exception source)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.<>c.<ConnectAsync>b__274_0(IAsyncResult iar)
+--- End of stack trace from previous location where exception was thrown ---
+   at CoreRCON.RCON.ConnectAsync()
+   at ArksZooAPI.Controllers.ServerModificationController.RunRCON(String command) in C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\Controllers\ServerModificationController.cs:line 185
+Status
+Error: No connection - System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (10061): No connection could be made because the target machine actively refused it. 192.168.1.217:32330
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw(Exception source)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.<>c.<ConnectAsync>b__274_0(IAsyncResult iar)
+--- End of stack trace from previous location where exception was thrown ---
+   at CoreRCON.RCON.ConnectAsync()
+   at ArksZooAPI.Controllers.ServerModificationController.RunRCON(String command) in C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\Controllers\ServerModificationController.cs:line 185
+Status
+Error: No connection - System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (10061): No connection could be made because the target machine actively refused it. 192.168.1.217:32330
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw(Exception source)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.<>c.<ConnectAsync>b__274_0(IAsyncResult iar)
+--- End of stack trace from previous location where exception was thrown ---
+   at CoreRCON.RCON.ConnectAsync()
+   at ArksZooAPI.Controllers.ServerModificationController.RunRCON(String command) in C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\Controllers\ServerModificationController.cs:line 185
+Status
+Error: No connection - System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (10061): No connection could be made because the target machine actively refused it. 192.168.1.217:32330
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw(Exception source)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.<>c.<ConnectAsync>b__274_0(IAsyncResult iar)
+--- End of stack trace from previous location where exception was thrown ---
+   at CoreRCON.RCON.ConnectAsync()
+   at ArksZooAPI.Controllers.ServerModificationController.RunRCON(String command) in C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\Controllers\ServerModificationController.cs:line 185
+Status
+Status
+Rcon connected
+Rcon connected
+Status
+Rcon connected
+Status
+Rcon connected
+Status
+Rcon connected
+Status
+Rcon connected
+Status
+Rcon connected
+Status
+Rcon connected
+Status
+Rcon connected

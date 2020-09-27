@@ -88,7 +88,6 @@ C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\bin\Release\netco
 C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\obj\Release\netcoreapp3.1\ArksZooAPI.csprojAssemblyReference.cache
 C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\obj\Release\netcoreapp3.1\staticwebassets\ArksZooAPI.StaticWebAssets.Manifest.cache
 C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\obj\Release\netcoreapp3.1\staticwebassets\ArksZooAPI.StaticWebAssets.xml
-C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\obj\Release\netcoreapp3.1\ArksZooAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\obj\Release\netcoreapp3.1\ArksZooAPI.AssemblyInfoInputs.cache
 C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\obj\Release\netcoreapp3.1\ArksZooAPI.AssemblyInfo.cs
 C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\obj\Release\netcoreapp3.1\ArksZooAPI.RazorTargetAssemblyInfo.cache
@@ -101,5 +100,8 @@ C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\bin\Release\netco
 C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\bin\Release\netcoreapp3.1\System.Web.Http.dll
 C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\bin\Release\netcoreapp3.1\System.Web.Http.Cors.dll
 C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\bin\Release\netcoreapp3.1\Newtonsoft.Json.Bson.dll
-C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\obj\Release\netcoreapp3.1\ArksZooAPI.csproj.CoreCompileInputs.cache
 C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\obj\Release\netcoreapp3.1\ArksZooAPI.genruntimeconfig.cache
+C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\bin\Release\netcoreapp3.1\CoreRCON.dll
+C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\obj\Release\netcoreapp3.1\ArksZooAPI.csproj.CoreCompileInputs.cache
+C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\obj\Release\netcoreapp3.1\ArksZooAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\bin\Release\netcoreapp3.1\ICSharpCode.SharpZipLib.dll

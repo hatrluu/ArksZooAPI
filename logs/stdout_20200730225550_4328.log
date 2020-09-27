@@ -1,0 +1,66 @@
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: http://127.0.0.1:3923
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI
+Start Map
+Status
+Status
+Error: No connection - System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (10060): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. 99.147.216.168:32330
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw(Exception source)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.<>c.<ConnectAsync>b__274_0(IAsyncResult iar)
+--- End of stack trace from previous location where exception was thrown ---
+   at CoreRCON.RCON.ConnectAsync()
+   at ArksZooAPI.Controllers.ServerModificationController.RunRCON(String command) in C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\Controllers\ServerModificationController.cs:line 172
+Status
+Error: No connection - System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (10060): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. 99.147.216.168:32330
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw(Exception source)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.<>c.<ConnectAsync>b__274_0(IAsyncResult iar)
+--- End of stack trace from previous location where exception was thrown ---
+   at CoreRCON.RCON.ConnectAsync()
+   at ArksZooAPI.Controllers.ServerModificationController.RunRCON(String command) in C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\Controllers\ServerModificationController.cs:line 172
+Error: No connection - System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (10060): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. 99.147.216.168:32330
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw(Exception source)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.<>c.<ConnectAsync>b__274_0(IAsyncResult iar)
+--- End of stack trace from previous location where exception was thrown ---
+   at CoreRCON.RCON.ConnectAsync()
+   at ArksZooAPI.Controllers.ServerModificationController.RunRCON(String command) in C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\Controllers\ServerModificationController.cs:line 172
+Status
+Status
+Error: No connection - System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (10060): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. 99.147.216.168:32330
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw(Exception source)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.<>c.<ConnectAsync>b__274_0(IAsyncResult iar)
+--- End of stack trace from previous location where exception was thrown ---
+   at CoreRCON.RCON.ConnectAsync()
+   at ArksZooAPI.Controllers.ServerModificationController.RunRCON(String command) in C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\Controllers\ServerModificationController.cs:line 172
+Status
+Status
+Error: No connection - System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (10060): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. 99.147.216.168:32330
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw(Exception source)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.<>c.<ConnectAsync>b__274_0(IAsyncResult iar)
+--- End of stack trace from previous location where exception was thrown ---
+   at CoreRCON.RCON.ConnectAsync()
+   at ArksZooAPI.Controllers.ServerModificationController.RunRCON(String command) in C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\Controllers\ServerModificationController.cs:line 172
+Error: No connection - System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (10060): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. 99.147.216.168:32330
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw(Exception source)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.<>c.<ConnectAsync>b__274_0(IAsyncResult iar)
+--- End of stack trace from previous location where exception was thrown ---
+   at CoreRCON.RCON.ConnectAsync()
+   at ArksZooAPI.Controllers.ServerModificationController.RunRCON(String command) in C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\Controllers\ServerModificationController.cs:line 172
+Error: No connection - System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (10060): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. 99.147.216.168:32330
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw(Exception source)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.<>c.<ConnectAsync>b__274_0(IAsyncResult iar)
+--- End of stack trace from previous location where exception was thrown ---
+   at CoreRCON.RCON.ConnectAsync()
+   at ArksZooAPI.Controllers.ServerModificationController.RunRCON(String command) in C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\Controllers\ServerModificationController.cs:line 172
+Status

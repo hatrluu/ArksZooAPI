@@ -453,3 +453,5 @@ C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\obj\Release\netco
 C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\obj\Release\netcoreapp3.1\win-x86\ArksZooAPI.dll
 C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\obj\Release\netcoreapp3.1\win-x86\ArksZooAPI.pdb
 C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\obj\Release\netcoreapp3.1\win-x86\ArksZooAPI.genruntimeconfig.cache
+C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\bin\Release\netcoreapp3.1\win-x86\CoreRCON.dll
+C:\Users\soulf\source\repos\ARK's Zoo Server Backup\ArksZooAPI\bin\Release\netcoreapp3.1\win-x86\ICSharpCode.SharpZipLib.dll

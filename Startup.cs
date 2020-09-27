@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -32,12 +33,12 @@ namespace ArksZooAPI
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        { 
+        {
             app.UseCors(builder =>
-                {
-                    //builder.WithOrigins("https://localhost:8080");
-                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-                });
+            {
+                //builder.WithOrigins("https://localhost:5500").WithOrigins("https://hatrluu.github.io/ArksZooWeb/").AllowAnyMethod().AllowAnyHeader();
+                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+            });
 
             if (env.IsDevelopment())
             {

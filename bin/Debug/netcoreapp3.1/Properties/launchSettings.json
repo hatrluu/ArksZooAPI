@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "ServerModification",
+      "launchUrl": "server/settings",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "ArksZooAPI": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "ServerModification",
+      "launchUrl": "server/settings",
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

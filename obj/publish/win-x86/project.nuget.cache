@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "74e1o+oLnSr4xDWVcrTsWlKk1YbuhCHZZxkHAB2J2Dy2yDqXgXKE7SexerKviKV9fOvW4AKEwBaWvdY6xTvjpw==",
+  "dgSpecHash": "nW1JcsPKBy2+tJkdfWNjxRBSpB17CVU0cCCafkmJd2+yd5H9K3UgzHl+J1nM+/HXjhTUp16WiGkEo9Yf4oIqrw==",
   "success": true,
   "projectFilePath": "C:\\Users\\soulf\\source\\repos\\ARK's Zoo Server Backup\\ArksZooAPI\\ArksZooAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\soulf\\.nuget\\packages\\corercon\\4.7.0\\corercon.4.7.0.nupkg.sha512",
+    "C:\\Users\\soulf\\.nuget\\packages\\icsharpcode.sharpziplib.dll\\0.85.4.369\\icsharpcode.sharpziplib.dll.0.85.4.369.nupkg.sha512",
     "C:\\Users\\soulf\\.nuget\\packages\\microsoft.aspnet.cors\\5.2.7\\microsoft.aspnet.cors.5.2.7.nupkg.sha512",
     "C:\\Users\\soulf\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
     "C:\\Users\\soulf\\.nuget\\packages\\microsoft.aspnet.webapi.core\\5.2.7\\microsoft.aspnet.webapi.core.5.2.7.nupkg.sha512",
@@ -102,6 +104,7 @@
     "C:\\Users\\soulf\\.nuget\\packages\\system.io.compression.zipfile\\4.3.0\\system.io.compression.zipfile.4.3.0.nupkg.sha512",
     "C:\\Users\\soulf\\.nuget\\packages\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Users\\soulf\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\soulf\\.nuget\\packages\\system.io.pipelines\\4.7.0\\system.io.pipelines.4.7.0.nupkg.sha512",
     "C:\\Users\\soulf\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Users\\soulf\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
     "C:\\Users\\soulf\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
@@ -156,6 +159,16 @@
     "C:\\Users\\soulf\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\3.1.5\\microsoft.aspnetcore.app.runtime.win-x86.3.1.5.nupkg.sha512"
   ],
   "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'ICSharpCode.SharpZipLib.dll 0.85.4.369' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "ICSharpCode.SharpZipLib.dll",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
     {
       "code": "NU1701",
       "level": "Warning",

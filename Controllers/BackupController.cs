@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using System.Timers;
+using System.Diagnostics;
 using System.Configuration;
-using System.Web.Http.Cors;
 
 namespace ArksZooAPI.Controllers
 {
@@ -20,48 +20,56 @@ namespace ArksZooAPI.Controllers
         private static string backupServerPath = ConfigurationManager.AppSettings["BackupPath"];
         private static int numberOfSavesToKeep = 3;
         private static Timer saveTimer;
-        private static Boolean backupStatus = false;
+        private static bool backupStatus = false;
 
-
-        //GET backup/latestbackup
-        [Route("latestbackup")]
         [HttpGet]
-        public string LatestBackup()
+        [Route("current")]
+        public IActionResult CurrentServerSave()
         {
-            //Need to catch empty folder
-            string latestBackup = "";
-            DirectoryInfo[] di = new DirectoryInfo(backupServerPath).GetDirectories();
-            var latestFile = di.OrderByDescending(x => x.LastWriteTime).First();
-            latestBackup = latestFile.Name;
-            return latestBackup.Remove(0,7);
+            string currentSaveGamePath = ConfigurationManager.AppSettings["GamePath"] + "\\Saved\\SavedArks\\"+ConfigurationManager.AppSettings["MapName"] +".ark";
+            FileSystemInfo file = new DirectoryInfo(currentSaveGamePath);
+
+            return Ok(file.LastWriteTime);
         }
 
-        //GET backup/backupstatus
-        [Route("backupstatus")]
+        //GET backup/latest
         [HttpGet]
-        public Boolean BackupStatus()
+        [Route("latest")]
+        public IActionResult LatestBackup()
+        {
+            //Update path
+            backupServerPath = ConfigurationManager.AppSettings["BackupPath"];
+
+            //Is try catch better here?
+            DirectoryInfo[] di = new DirectoryInfo(backupServerPath).GetDirectories();
+            if(di.Length != 0)
+            {
+                string latestBackup = "";
+                var latestFile = di.OrderByDescending(x => x.LastWriteTime).First();
+                string[] fileNameArr = latestFile.Name.Split('-');
+                latestBackup = fileNameArr[1] + " " + fileNameArr[2];
+                System.Diagnostics.Debug.WriteLine(latestBackup);
+                return Ok(latestBackup);
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Empty Folder, No save here"); 
+                return NoContent();
+            }
+        }
+
+        //GET backup/status
+        [HttpGet]
+        [Route("status")]
+        public bool BackupStatus()
         {
             return backupStatus ? true : false;
         }
 
-        //GET Backup/settings
-        [Route("settings")]
+        //GET backup/start
         [HttpGet]
-        public List<string> GetSettings()
-        {
-            var appSettings = ConfigurationManager.AppSettings;
-            List<string> settings = new List<string>();
-            foreach( string key in appSettings.AllKeys)
-            {
-                settings.Add(String.Format("{0}: {1}", key, appSettings[key].ToString()));
-            }
-            return settings;
-        }
-
-        //GET Backup/startbackup
-        [Route("startbackup")]
-        [HttpGet]
-        public string StartBackup()
+        [Route("start")]
+        public IActionResult StartBackup()
         {
             int backupInterval = Int32.Parse(ConfigurationManager.AppSettings["BackupInterval"]);
             int hoursSave = Int32.Parse(ConfigurationManager.AppSettings["HoursSave"]);
@@ -70,30 +78,24 @@ namespace ArksZooAPI.Controllers
 
             TimeChecker(backupInterval);
             backupStatus = true;
-            return string.Format("Backup started at {0:hh:mm:ss.fff}", DateTime.Now);
-            /*
-            Console.WriteLine("\nPress the Enter key to exit the application...\n");
-            Console.WriteLine("The application started at {0:hh:mm:ss.fff}", DateTime.Now);
-            Console.ReadLine();
-            saveTimer.Stop();
-            saveTimer.Dispose();
-            */
+            return Ok(string.Format("Backup started at {0:hh:mm:ss.fff}", DateTime.Now));
         }
 
-        //GET Backup/stopbackup
-        [Route("stopbackup")]
+        //GET backup/stop
         [HttpGet]
-        public string StopBackup()
+        [Route("stop")]
+        public IActionResult StopBackup()
         {
             saveTimer.Stop();
             saveTimer.Dispose();
             backupStatus = false;
-            return string.Format("Backup ended at {0:hh:mm:ss.fff}", DateTime.Now);
+            return Ok(string.Format("Backup ended at {0:hh:mm:ss.fff}", DateTime.Now));
         }
 
-        [Route("testbackup")]
+        //GET backup/test
         [HttpGet]
-        public string TestBackup()
+        [Route("manual")]
+        public IActionResult ManualBackup()
         {
             //Update path
             backupServerPath = ConfigurationManager.AppSettings["BackupPath"];
@@ -101,19 +103,32 @@ namespace ArksZooAPI.Controllers
             string current = currentServerPath;
             string backup = backupServerPath+ "\\";
             DateTime localDateTime = DateTime.Now;
-            string backupFolder = "backup-" + localDateTime.ToString("hhmmtt-MMdd");
+            string backupFolder = "manualbackup-" + localDateTime.ToString("hhmmtt-MMdd");
             string newBackupLocation = backup + backupFolder;
-            Directory.CreateDirectory(newBackupLocation);
+
+            try
+            {
+                Directory.CreateDirectory(newBackupLocation);
             
-            //Now Create all of the directories
-            foreach (string dirPath in Directory.GetDirectories(current, "*", SearchOption.AllDirectories))
-                Directory.CreateDirectory(dirPath.Replace(current, newBackupLocation));
+                //Now Create all of the directories
+                foreach (string dirPath in Directory.GetDirectories(current, "*", SearchOption.AllDirectories))
+                    Directory.CreateDirectory(dirPath.Replace(current, newBackupLocation));
 
-            //Copy all the files & Replaces any files with the same name
-            foreach (string newPath in Directory.GetFiles(current, "*.*", SearchOption.AllDirectories))
-                System.IO.File.Copy(newPath, newPath.Replace(current, newBackupLocation), true);
+                //Copy all the files & Replaces any files with the same name
+                foreach (string newPath in Directory.GetFiles(current, "*.*", SearchOption.AllDirectories))
+                    System.IO.File.Copy(newPath, newPath.Replace(current, newBackupLocation), true);
 
-            return string.Format("Backup Completed at {0}", backupFolder);
+                return Ok(string.Format("Backup Completed at {0}", backupFolder));
+            }
+            catch (IOException err)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,string.Format("{0:hh:mm:ss.fff-MM/dd} IOException {1}", DateTime.Now, err));
+            }
+            catch (Exception err)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, string.Format("{0:hh:mm:ss.fff-MM/dd} Exception {1}", DateTime.Now, err));
+            }
+
         }
         private static void TimeChecker(int minute)
         {
@@ -126,37 +141,45 @@ namespace ArksZooAPI.Controllers
         }
         private static void BackupSaved(Object source, ElapsedEventArgs e)
         {
-            //Update path
-            backupServerPath = ConfigurationManager.AppSettings["BackupPath"];
-
-            string current = currentServerPath;
-            string backup = backupServerPath+"\\";
-            DateTime localDateTime = DateTime.Now;
-            string backupFolder = "backup-" + localDateTime.ToString("hhmmtt-MMdd");
-            string newBackupLocation = backup + backupFolder;
-            Directory.CreateDirectory(newBackupLocation);
-
-            try
+            Process[] pname = Process.GetProcessesByName("ShooterGameServer");
+            if (pname.Length == 0)
             {
-                //Now Create all of the directories
-                foreach (string dirPath in Directory.GetDirectories(current, "*", SearchOption.AllDirectories))
-                    Directory.CreateDirectory(dirPath.Replace(current, newBackupLocation));
+                backupStatus = false;
+            } 
+            else 
+            { 
+                //Update path
+                backupServerPath = ConfigurationManager.AppSettings["BackupPath"];
+                
+                string current = currentServerPath;
+                string backup = backupServerPath + "\\";
+                DateTime localDateTime = DateTime.Now;
+                string backupFolder = "backup-" + localDateTime.ToString("hhmmtt-MMdd");
+                string newBackupLocation = backup + backupFolder;
 
-                //Copy all the files & Replaces any files with the same name
-                foreach (string newPath in Directory.GetFiles(current, "*.*", SearchOption.AllDirectories))
-                    System.IO.File.Copy(newPath, newPath.Replace(current, newBackupLocation), true);
+                try
+                {
+                    Directory.CreateDirectory(newBackupLocation);
+                    //Now Create all of the directories
+                    foreach (string dirPath in Directory.GetDirectories(current, "*", SearchOption.AllDirectories))
+                        Directory.CreateDirectory(dirPath.Replace(current, newBackupLocation));
 
-                Console.WriteLine("Backup Completed at {0}", backupFolder);
+                    //Copy all the files & Replaces any files with the same name
+                    foreach (string newPath in Directory.GetFiles(current, "*.*", SearchOption.AllDirectories))
+                        System.IO.File.Copy(newPath, newPath.Replace(current, newBackupLocation), true);
+
+                    Debug.WriteLine("{0:hh:mm:ss} Backup Completed at {1}", DateTime.Now, backupFolder);
+                }
+                catch (IOException err)
+                {
+                    Debug.WriteLine(err);
+                }
+                catch (Exception err)
+                {
+                    Debug.WriteLine(err);
+                }
+                DeleteOldSaved();
             }
-            catch (IOException err)
-            {
-                Console.WriteLine(err.ToString());
-            }
-            catch
-            {
-                Console.WriteLine("Something Wrong");
-            }
-            DeleteOldSaved();
         }
 
         private static void DeleteOldSaved()
